@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include("../layout/common") -%>
+    <title> student Profile </title>
+
+</head>
+
+<body>
+    <div class="container">
+        <h3 class="mt-5"> USER</h3>
+        <div class="d-flex align-items-center">
+            <a class="btn btn-info" href="/user/create">Create</a>
+            <form class="d-flex ml-auto" action="/user/search" method="GET">
+                <input class="form-control" type="text" placeholder="Enter name" name="q">
+                <button class="btn btn-info" type="submit">Search</button>
+            </form>
+        </div>
+        <table class="table mt-4 mb-5">
+            <thead class="thead-dark">
+                <tr class="">
+                    <th>Avatar</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Action</th>
+                    
+                </tr>
+            </thead>
+            <% users.forEach(function(user) { %>
+            <tr class="mt-5">
+                <td>
+                   <img src="<%= user.avatar%> " alt="" width="30px" height="30px">
+                </td>
+                <td>
+                    <%=  user.name %>
+                </td>
+                <td>
+                    <%=  user.phone %>
+                </td>
+                <td class="btn btn-light"> <a href="/user/<%=user.id%>"> view </a></td>
+            </tr>
+            <% }); %>
+        </table>
+    </div>
+</body>
+
+</html>
